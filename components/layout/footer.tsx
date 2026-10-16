@@ -1,75 +1,145 @@
 import Link from "next/link";
+import Image from "next/image";
+import { Mail, MapPin, Phone } from "lucide-react";
+import { FaDribbble, FaGithub, FaInstagram, FaLinkedinIn } from "react-icons/fa";
+
+const serviceColumns = [
+  ["UI/UX Design", "Graphic Design", "Web Development"],
+  ["WordPress Development", "AI Solutions & Automation", "App Development"],
+  ["LinkedIn Profile & Content Optimization"],
+];
+
+const socials = [
+  { label: "LinkedIn", href: "#", Icon: FaLinkedinIn },
+  { label: "Instagram", href: "#", Icon: FaInstagram },
+  { label: "Dribbble", href: "#", Icon: FaDribbble },
+  { label: "GitHub", href: "#", Icon: FaGithub },
+];
+
+const card = "rounded-3xl bg-[#0d0d10] border border-white/[0.03]";
 
 export function Footer() {
   return (
-    <footer>
-      <div className="mx-auto grid max-w-6xl gap-12 px-5 py-16 md:grid-cols-4 lg:px-8">
-        <div>
-          <div className="flex items-center gap-2">
-            <span className="grid size-6 place-items-center rounded-[7px] bg-orange-500 text-[11px] font-bold text-white">
-              Q
+    <footer className="relative overflow-hidden px-4 pb-6 pt-16 lg:px-8">
+      <div className="mx-auto max-w-350">
+        {/* Bento grid */}
+        <div className="grid gap-4 md:grid-cols-[1fr_1.55fr_88px] md:grid-rows-[auto_auto]">
+          {/* Tagline */}
+          <div className={`${card} flex flex-col p-8 md:row-span-2`}>
+            <h3 className="font-display text-[34px] font-bold leading-[1.05] tracking-tight text-white">
+              Every Moment That Matter
+            </h3>
+            <span className="mt-8 grid size-5 place-items-center rounded bg-[#e8582a]">
+              <MapPin className="size-2.5 text-black" />
             </span>
-
-            <span className="text-sm font-semibold">Quadra</span>
+            <p className="mt-4 max-w-60 text-[11px] leading-4 text-neutral-400">
+              Four founders, seven disciplines. Design, code, and AI for teams
+              that need it shipped.
+            </p>
           </div>
 
-          <p className="mt-4 max-w-xs text-xs leading-5 text-muted-foreground">
-            Four founders, seven disciplines. Design, code, and AI for teams
-            that need it shipped.
-          </p>
+          {/* Services */}
+          <div className={`${card} px-8 py-6`}>
+            <h3 className="font-display text-[34px] font-bold tracking-tight text-white">
+              Services
+            </h3>
+            <div className="mt-2 grid grid-cols-2 gap-x-6 gap-y-3 sm:grid-cols-3">
+              {serviceColumns.map((col, i) => (
+                <ul key={i} className="space-y-2">
+                  {col.map((item) => (
+                    <li key={item}>
+                      <Link
+                        href="/#services"
+                        className="text-[10px] leading-4 text-neutral-400 transition hover:text-white"
+                      >
+                        {item}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              ))}
+            </div>
+          </div>
 
-          <div className="mt-5 flex gap-2">
-            {["in", "ig", "x", "dr"].map((social) => (
-              <span
-                key={social}
-                className="grid size-7 place-items-center rounded-full border border-border text-[9px] text-muted-foreground"
+          {/* Socials */}
+          <div
+            className={`${card} flex items-center justify-center gap-3 rounded-full p-1 md:row-span-2 md:flex-col md:justify-start md:pt-5`}
+          >
+            {socials.map(({ label, href, Icon }) => (
+              <a
+                key={label}
+                href={href}
+                aria-label={label}
+                className="grid size-12 place-items-center rounded-full border border-white/10 bg-white/[0.02] text-neutral-200 transition hover:border-[#e8582a]/60 hover:text-[#e8582a]"
               >
-                {social}
-              </span>
+                <Icon className="size-5" />
+              </a>
             ))}
           </div>
-        </div>
 
-        <div>
-          <h3 className="text-[10px] font-semibold">Services</h3>
+          {/* Page links */}
+          <nav
+            className={`${card} flex items-center justify-center gap-8 px-8 py-8 sm:gap-12`}
+          >
+            {[
+              ["About", "/about"],
+              ["Work", "/work"],
+              ["Contact", "/contact"],
+            ].map(([label, href]) => (
+              <Link
+                key={label}
+                href={href}
+                className="font-display text-xl font-bold tracking-tight text-white transition hover:text-[#e8582a]"
+              >
+                {label}
+              </Link>
+            ))}
+          </nav>
 
-          <div className="mt-4 flex flex-col gap-2 text-[10px] text-muted-foreground">
-            <Link href="/services">UI/UX Design</Link>
-            <Link href="/services">Graphic Design</Link>
-            <Link href="/services">Web Development</Link>
-            <Link href="/services">App Development</Link>
-            <Link href="/services">WordPress Development</Link>
-            <Link href="/services">AI Solutions & Automation</Link>
-            <Link href="/services">LinkedIn Profile & Content</Link>
+          {/* Contact us */}
+          <div
+            className={`${card} flex flex-col gap-4 px-8 py-6 md:col-span-3 md:flex-row md:items-center md:gap-10`}
+          >
+            <h3 className="font-display text-[34px] font-bold tracking-tight text-white">
+              Contact us
+            </h3>
+            <div className="flex flex-wrap items-center gap-x-8 gap-y-2 text-[10px] text-neutral-400 md:ml-6">
+              <a
+                href="mailto:hello@quadra.studio"
+                className="inline-flex items-center gap-2 transition hover:text-white"
+              >
+                <Mail className="size-3" />
+                hello@quadra.studio
+              </a>
+              <a
+                href="tel:+13125550188"
+                className="inline-flex items-center gap-2 transition hover:text-white"
+              >
+                <Phone className="size-3" />
+                +1 (312) 555-0188
+              </a>
+              <span>Remote-first · GMT+5 &amp; CST</span>
+            </div>
           </div>
         </div>
 
-        <div>
-          <h3 className="text-[10px] font-semibold">Company</h3>
-
-          <div className="mt-4 flex flex-col gap-2 text-[10px] text-muted-foreground">
-            <Link href="/about">About</Link>
-            <Link href="/work">Work</Link>
-            <Link href="/contact">Contact</Link>
-          </div>
+        {/* Giant wordmark */}
+        <div className="mt-1 flex items-center justify-center  overflow-hidden">
+          <Image
+            src="/images/logo.png"
+            alt="Quadnodes"
+            width={1600}
+            height={280}
+            sizes="(min-width: 1100px) 1100px, 100vw"
+            className="h-auto w-full max-w-350 select-none"
+          />
         </div>
 
-        <div>
-          <h3 className="text-[10px] font-semibold">Get in touch</h3>
-
-          <div className="mt-4 space-y-2 text-[10px] text-muted-foreground">
-            <p>hello@quadra.studio</p>
-            <p>+1 (312) 555-0188</p>
-            <p>Remote-first · GMT-5 & CST</p>
-            <p>Replies within 24 hours</p>
-          </div>
+        {/* Bottom bar */}
+        <div className="mt-10 flex flex-col gap-2 border-t border-white/10 pt-4 text-[10px] text-neutral-400 sm:flex-row sm:items-center sm:justify-between">
+          <p>© 2026 Quadra Studio. All rights reserved.</p>
+          <p>Graphic Design · UI/UX · Web · Apps · AI · WordPress · LinkedIn</p>
         </div>
-      </div>
-
-      <div className="mx-auto flex max-w-6xl flex-col gap-3 border-t border-border px-5 py-5 text-[8px] text-muted-foreground sm:flex-row sm:items-center sm:justify-between lg:px-8">
-        <p>© 2026 Quadra Studio. All rights reserved.</p>
-
-        <p>Graphic Design · UI/UX · Web · Apps · AI · WordPress · LinkedIn</p>
       </div>
     </footer>
   );

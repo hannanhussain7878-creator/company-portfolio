@@ -2,15 +2,16 @@ import { Footer } from "@/components/layout/footer";
 import { Navbar } from "@/components/layout/navbar";
 
 import { Hero } from "@/components/home/hero";
-import { LogoStrip } from "@/components/home/logo-strip";
+
 import { Services } from "@/components/home/services";
-import { Process } from "@/components/home/process";
+
 import { FeaturedWork } from "@/components/home/featured-work";
-import { FounderStrip } from "@/components/home/founder-strip";
+
 import { Testimonials } from "@/components/home/testimonials";
 import { HomeCTA } from "@/components/home/home-cta";
 
 import { SmoothScroll } from "@/components/ui/smooth-scroll";
+import { WhoWeAre } from "@/components/home/who-we-are";
 
 export default function HomePage() {
   return (
@@ -22,15 +23,11 @@ export default function HomePage() {
       <main>
         <Hero />
 
-        <LogoStrip />
+        <WhoWeAre />
 
         <Services />
 
-        <Process />
-
         <FeaturedWork />
-
-        <FounderStrip />
 
         <Testimonials />
 

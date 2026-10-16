@@ -1,96 +1,108 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
-import { Reveal } from "@/components/ui/reveal";
-import { projects } from "@/data/projects";
+import Image from "next/image";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
+import { motion } from "motion/react";
+
+const projects = [
+  {
+    title: "Ledgerline",
+    subtitle: "Ledgerline · B2B Fintech",
+    image: "/images/work/ledgerline.png",
+    tags: ["UI/UX Design", "Web Development"],
+    href: "/work",
+  },
+  {
+    title: "Kite Health",
+    subtitle: "Kite Health · Healthtech",
+    image: "/images/work/kite-health.png",
+    tags: ["App Development", "UI/UX Design"],
+    href: "/work",
+  },
+  {
+    title: "Orbit Ops Copilot",
+    subtitle: "Orbit Logistics · Logistics",
+    image: "/images/work/orbit-ops.png",
+    tags: ["AI Solutions"],
+    href: "/work",
+  },
+];
 
 export function FeaturedWork() {
   return (
-    <section className="border-b border-border py-28 lg:py-36">
-      <div className="mx-auto max-w-6xl px-5 lg:px-8">
-        <Reveal>
-          <div className="flex items-end justify-between gap-6">
-            <div>
-              <p className="mb-3 text-[10px] font-semibold uppercase tracking-[0.16em] text-orange-500">
-                Featured Work
-              </p>
+    <section className="px-5 py-3 lg:px-8 lg:py-8">
+      <div className="mx-auto max-w-350">
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="mx-auto max-w-md text-center"
+        >
+          <p className="text-xs text-[#ff5a1f]">Featured Work</p>
+          <h2 className="font-display mt-5 text-3xl font-bold leading-tight tracking-tight text-white sm:text-4xl">
+            Shipped, measured, handed over
+          </h2>
+        </motion.div>
 
-              <h2 className="max-w-xl text-4xl font-semibold leading-[0.95] tracking-[-0.045em] sm:text-5xl">
-                Shipped, measured,
-                <br />
-                handed over.
-              </h2>
-            </div>
-
-            <Link
-              href="/work"
-              className="hidden items-center gap-2 rounded-full border border-border px-4 py-2 text-[10px] font-medium md:inline-flex"
+        <div className="mt-14 grid gap-6 md:grid-cols-3">
+          {projects.map((project, i) => (
+            <motion.div
+              key={project.title}
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: i * 0.1 }}
             >
-              View All Work
-              <ArrowUpRight className="size-3" />
-            </Link>
-          </div>
-        </Reveal>
+              <Link
+                href={project.href}
+                className="group flex h-full flex-col rounded-2xl border border-white/10 bg-linear-to-b from-[#121214] to-[#0a0a0b] p-5 transition duration-300 hover:-translate-y-1 hover:border-white/20"
+              >
+                <div className="relative aspect-4/3 overflow-hidden rounded-xl">
+                  <Image
+                    src={project.image}
+                    alt={project.title}
+                    fill
+                    className="object-cover transition duration-500 group-hover:scale-[1.03]"
+                  />
+                </div>
 
-        <div className="mt-12 grid gap-4 md:grid-cols-3">
-          {projects.map((project, index) => (
-            <Reveal key={project.id} delay={index * 0.08}>
-              <Link href={project.href ?? `/work/${project.id}`}>
-                <article className="group overflow-hidden rounded-xl border border-border transition-all duration-300 hover:-translate-y-1 hover:border-orange-500/30">
-                  <div className="relative aspect-[1.2/1] overflow-hidden bg-[#0d0d0f]">
-                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,85,20,.25),transparent_45%)]" />
+                <div className="mt-8 flex items-center justify-between">
+                  <h3 className="font-display text-base font-semibold text-white">
+                    {project.title}
+                  </h3>
+                  <ArrowUpRight className="size-3.5 text-neutral-400 transition group-hover:text-white" />
+                </div>
 
-                    <div className="absolute inset-[18%] rounded-xl border border-white/10 bg-white/[0.03] shadow-2xl transition-transform duration-700 group-hover:scale-105">
-                      <div className="m-4 h-2 w-16 rounded-full bg-orange-500/80" />
+                <p className="mt-3 text-[13px] text-neutral-400">
+                  {project.subtitle}
+                </p>
 
-                      <div className="m-4 mt-7 h-20 rounded-lg border border-white/10 bg-white/[0.04]">
-                        <div className="mx-4 mt-7 h-1 w-24 rounded bg-white/20" />
-
-                        <div className="mx-4 mt-3 flex gap-2">
-                          <span className="h-8 flex-1 rounded bg-orange-500/20" />
-                          <span className="h-8 flex-1 rounded bg-white/5" />
-                          <span className="h-8 flex-1 rounded bg-white/5" />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="p-5">
-                    <div className="flex items-center justify-between">
-                      <h3 className="text-sm font-semibold">{project.title}</h3>
-
-                      <ArrowUpRight className="size-3 text-muted-foreground transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-                    </div>
-
-                    <p className="mt-1 text-[10px] text-muted-foreground">
-                      {project.client}
-                    </p>
-
-                    <div className="mt-4 flex flex-wrap gap-1.5">
-                      {project.tags.map((tag) => (
-                        <span
-                          key={tag}
-                          className="rounded-full border border-border px-2 py-1 text-[8px] text-muted-foreground"
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                </article>
+                <div className="mt-6 flex flex-wrap gap-2">
+                  {project.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="rounded-full border border-white/10 px-3 py-1.5 text-[10px] text-neutral-300"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
               </Link>
-            </Reveal>
+            </motion.div>
           ))}
         </div>
 
-        <Link
-          href="/work"
-          className="mt-6 inline-flex items-center gap-2 rounded-full border border-border px-4 py-2 text-[10px] font-medium md:hidden"
-        >
-          View All Work
-          <ArrowUpRight className="size-3" />
-        </Link>
+        <div className="mt-12 flex justify-center">
+          <Link
+            href="/work"
+            className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.02] px-5 py-2.5 text-[11px] font-medium text-white transition hover:bg-white/10"
+          >
+            View All Work
+            <ArrowRight className="size-3" />
+          </Link>
+        </div>
       </div>
     </section>
   );
