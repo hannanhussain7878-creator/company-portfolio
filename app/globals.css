@@ -1,34 +1,45 @@
+
 @import "tailwindcss";
 
 :root {
+  color-scheme: dark;
+
   --background: #080809;
   --foreground: #f5f5f5;
-
   --muted: #111113;
   --muted-foreground: #858589;
-
   --border: rgba(255, 255, 255, 0.09);
 
+  --surface: #0d0d10;
+  --surface-raised: #121214;
+  --text-secondary: #a1a1aa;
+  --text-tertiary: #73737b;
+  --grid-line: rgba(255, 255, 255, 0.035);
   --orange: #ff5a1f;
 }
 
-.light {
+html.light {
+  color-scheme: light;
+
   --background: #fafafa;
   --foreground: #171719;
-
   --muted: #f1f1f1;
   --muted-foreground: #77777d;
+  --border: rgba(0, 0, 0, 0.10);
 
-  --border: rgba(0, 0, 0, 0.09);
+  --surface: #ffffff;
+  --surface-raised: #f4f4f5;
+  --text-secondary: #52525b;
+  --text-tertiary: #71717a;
+  --grid-line: rgba(0, 0, 0, 0.035);
+  --orange: #e94c1b;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-
   --color-muted: var(--muted);
   --color-muted-foreground: var(--muted-foreground);
-
   --color-border: var(--border);
 }
 
@@ -47,14 +58,15 @@ body {
   font-family: var(--font-poppins), sans-serif;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
-
   transition:
-    background 0.3s ease,
-    color 0.3s ease;
+    background-color 0.25s ease,
+    color 0.25s ease;
 }
+
 .font-display {
-  font-family: var(--font-space-grotesk), sans-serif ;
+  font-family: var(--font-space-grotesk), sans-serif;
 }
+
 ::selection {
   background: rgba(255, 90, 31, 0.25);
   color: inherit;
@@ -74,68 +86,75 @@ button {
   font: inherit;
 }
 
+/* Shared theme-aware surfaces */
+.theme-surface {
+  background: var(--surface);
+}
+
+.theme-surface-raised {
+  background: var(--surface-raised);
+}
+
+.theme-border {
+  border-color: var(--border);
+}
+
+.theme-muted {
+  color: var(--muted-foreground);
+}
+
+.theme-secondary {
+  color: var(--text-secondary);
+}
+
+.theme-tertiary {
+  color: var(--text-tertiary);
+}
+
+/* Grid and glow */
+.grid-background {
+  background-image:
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+  background-size: 22px 22px;
+  mask-image: linear-gradient(to bottom, transparent, black 25%, black);
+}
+
 .hero-glow {
   background: radial-gradient(
-    circle at right 40% top 10%,
+    circle at 70% 20%,
     rgba(255, 83, 25, 0.18),
     transparent 62%
   );
   filter: blur(40px);
-
-  /* smooth, slow breathing pulse — opacity + scale, not a hard blink */
   animation: hero-glow-pulse 4.5s ease-in-out infinite;
   transform-origin: 70% 20%;
 }
 
-.light .hero-glow {
-  background: radial-gradient(
-    circle at right 40% top 10%,
-    rgba(255, 83, 25, 0.28),
-    transparent 62%
-  );
-}
-
 @keyframes hero-glow-pulse {
-  0%,
-  100% {
+  0%, 100% {
     opacity: 0.55;
     transform: scale(1);
   }
+
   50% {
     opacity: 1;
     transform: scale(1.08);
   }
 }
 
-.grid-background {
-  background-image:
-    linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
-
-  background-size: 72px 72px;
-
-  mask-image: linear-gradient(to bottom, black, transparent 85%);
-}
-
-.light .grid-background {
-  background-image:
-    linear-gradient(rgba(0, 0, 0, 0.035) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 0, 0, 0.035) 1px, transparent 1px);
-}
-
 @media (max-width: 768px) {
   .hero-glow {
-    /* keep the glow proportionate instead of overwhelming small viewports */
     transform: scale(0.6);
     transform-origin: 80% 10%;
   }
 
   @keyframes hero-glow-pulse {
-    0%,
-    100% {
+    0%, 100% {
       opacity: 0.55;
       transform: scale(0.6);
     }
+
     50% {
       opacity: 1;
       transform: scale(0.66);

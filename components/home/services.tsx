@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState } from "react";
@@ -37,7 +38,7 @@ const services: Service[] = [
   {
     title: "Web Development",
     description:
-      "Lorem ipsum dolor sit amet consectetur. Eu amet posuere consequat donec suspendisse lorem enim. Elit viverra nisl non nisl eleifend. Cursus erat mattis fames et mollis risus at.",
+      "We build responsive, high-performance websites and web applications with modern technologies, accessible interfaces, and maintainable code.",
     cards: [
       { label: "Artificial Intelligence", image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=800&auto=format&fit=crop" },
       { label: "Front-End Development", image: "https://images.unsplash.com/photo-1547658719-da2b51169166?q=80&w=800&auto=format&fit=crop" },
@@ -95,19 +96,20 @@ export function Services() {
   const [open, setOpen] = useState<number | null>(2);
 
   return (
-    <section className="px-5 py-2 lg:px-8 lg:py-5">
-      <div className="mx-auto relative overflow-hidden max-w-350 rounded-3xl bg-[#0c0c0e] px-5 py-16 sm:px-10 lg:py-20">
-        {/* Orange glow, bottom right */}
+    <section className="bg-background px-5 py-2 text-foreground transition-colors duration-300 lg:px-8 lg:py-5">
+      <div className="relative mx-auto max-w-[1400px] overflow-hidden rounded-3xl border border-border bg-[var(--surface)] px-5 py-16 transition-colors duration-300 sm:px-10 lg:py-20">
+        {/* Orange glow */}
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute -bottom-40 -right-40 z-10 h-[520px] w-[520px] rounded-full"
+          className="pointer-events-none absolute -bottom-40 -right-40 z-0 size-[520px] rounded-full"
           style={{
             background:
-              "radial-gradient(circle, rgba(255,77,0,0.22) 0%, rgba(255,77,0,0.08) 40%, transparent 70%)",
+              "radial-gradient(circle, rgba(255,77,0,0.18) 0%, rgba(255,77,0,0.07) 40%, transparent 70%)",
           }}
         />
 
-        <div className="mx-auto max-w-300">
+        <div className="relative z-10 mx-auto max-w-[1200px]">
+          {/* Heading */}
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -116,12 +118,14 @@ export function Services() {
             className="mx-auto max-w-xl text-center"
           >
             <p className="text-xs text-[#ff5a1f]">Our Services</p>
-            <h2 className="font-display mt-5 text-2xl font-bold leading-tight tracking-tight text-white sm:text-4xl">
+
+            <h2 className="font-display mt-5 text-2xl font-bold leading-tight tracking-tight text-foreground sm:text-4xl">
               Your Aspiration, Our Expertise: Tailored Services for Unmatched
               Excellence.
             </h2>
           </motion.div>
 
+          {/* Expandable services */}
           <ul className="mt-12">
             {services.map((service, i) => {
               const isOpen = open === i;
@@ -130,21 +134,23 @@ export function Services() {
               return (
                 <li
                   key={service.title}
-                  className="border-b border-white/10 first:border-t-0 last:border-b-0"
+                  className="border-b border-border"
                 >
                   <button
                     type="button"
                     aria-expanded={isOpen}
                     onClick={() => setOpen(isOpen ? null : i)}
-                    className="group flex w-full items-center gap-6 py-5 text-left"
+                    className="group flex w-full items-center gap-4 py-5 text-left sm:gap-6"
                   >
-                    <span className="w-10 shrink-0 font-display text-xl text-white">
+                    <span className="w-10 shrink-0 font-display text-xl text-muted-foreground">
                       {number}
                     </span>
-                    <span className="flex-1 font-display text-xl font-medium uppercase tracking-wide text-white">
+
+                    <span className="flex-1 font-display text-base font-medium uppercase tracking-wide text-foreground transition-colors group-hover:text-[#ff5a1f] sm:text-xl">
                       {service.title}
                     </span>
-                    <span className="grid size-7 shrink-0 place-items-center rounded-full border border-white/30 text-white transition group-hover:border-white/60 group-hover:bg-white/10">
+
+                    <span className="grid size-8 shrink-0 place-items-center rounded-full border border-border text-foreground transition-colors group-hover:border-[#ff5a1f]/60 group-hover:text-[#ff5a1f]">
                       {isOpen ? (
                         <ArrowUpRight className="size-3.5" />
                       ) : (
@@ -159,29 +165,35 @@ export function Services() {
                         initial={{ height: 0, opacity: 0 }}
                         animate={{ height: "auto", opacity: 1 }}
                         exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                        transition={{
+                          duration: 0.4,
+                          ease: [0.22, 1, 0.36, 1],
+                        }}
                         className="overflow-hidden"
                       >
                         <div className="pb-6">
-                          <p className="border-l border-white/25 pl-2 text-[10px] leading-4 text-neutral-400">
+                          <p className="max-w-3xl border-l border-border pl-3 text-xs leading-5 text-muted-foreground sm:text-sm">
                             {service.description}
                           </p>
 
-                          <div className="mt-4 grid grid-cols-2 gap-2 sm:grid-cols-4">
+                          <div className="mt-5 grid grid-cols-2 gap-2 sm:grid-cols-4 sm:gap-3">
                             {service.cards.map((card) => (
                               <div
                                 key={card.label}
-                                className="relative aspect-[4/3] overflow-hidden rounded-[3px]"
+                                className="group/card relative aspect-[4/3] overflow-hidden rounded-lg border border-border bg-[var(--surface-raised)]"
                               >
                                 <Image
                                   src={card.image}
                                   alt={card.label}
                                   fill
-                                  className="object-cover"
-                                  unoptimized // Added to ensure external Unsplash URLs load without next.config.js changes
+                                  sizes="(max-width: 640px) 50vw, 25vw"
+                                  className="object-cover transition-transform duration-500 group-hover/card:scale-105"
+                                  unoptimized
                                 />
-                                <div className="absolute inset-0 bg-black/55" />
-                                <span className="absolute inset-0 grid place-items-center px-6 text-center text-[11px] leading-4 text-white">
+
+                                <div className="absolute inset-0 bg-black/55 transition-colors group-hover/card:bg-black/40" />
+
+                                <span className="absolute inset-0 grid place-items-center px-3 text-center text-[11px] font-medium leading-4 text-white sm:px-6 sm:text-xs">
                                   {card.label}
                                 </span>
                               </div>

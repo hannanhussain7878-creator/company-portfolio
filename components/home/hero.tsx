@@ -1,4 +1,3 @@
-
 "use client";
 
 import Link from "next/link";
@@ -16,14 +15,14 @@ const clients = [
 
 export function Hero() {
   return (
-    <section className="relative isolate overflow-hidden bg-[#0b0a0a] text-center">
+    <section className="relative isolate overflow-hidden bg-background text-foreground transition-colors duration-300">
       {/* Background grid */}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 -z-20"
         style={{
           backgroundImage:
-            "linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px)",
+            "linear-gradient(var(--grid-line) 1px, transparent 1px), linear-gradient(90deg, var(--grid-line) 1px, transparent 1px)",
           backgroundSize: "22px 22px",
           maskImage:
             "linear-gradient(to bottom, transparent 0%, black 20%, black 100%)",
@@ -35,34 +34,41 @@ export function Hero() {
       {/* Warm background glow */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-x-0 bottom-0 -z-10 h-[65%]"
+        className="pointer-events-none absolute inset-x-0 bottom-0 -z-10 h-[85%]"
         style={{
-          background:
-            "radial-gradient(ellipse at 50% 100%, rgba(115,43,23,0.20), transparent 72%)",
+          background: `
+      radial-gradient(ellipse 38% 65% at 8% 100%, rgba(115,43,23,0.24), transparent 75%),
+      radial-gradient(ellipse 42% 70% at 50% 100%, rgba(115,43,23,0.20), transparent 75%),
+      radial-gradient(ellipse 38% 65% at 92% 100%, rgba(115,43,23,0.24), transparent 75%)
+    `,
         }}
       />
 
-      {/* Hero content */}
-      <div className="relative z-10 flex flex-col items-center px-5 pb-0 pt-33 sm:pt-45">
+      {/* Main hero content */}
+      <div className="relative z-10 flex flex-col items-center px-5 pb-0 pt-50 text-center ">
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-          className="max-w-[760px] font-display text-[clamp(2.2rem,4.6vw,3.6rem)] font-semibold leading-[0.99] tracking-[-0.055em] text-[#f5f3f1]"
+          transition={{
+            duration: 0.7,
+            ease: [0.22, 1, 0.36, 1],
+          }}
+          className="max-w-[760px] font-display text-[clamp(2.2rem,4.6vw,3.6rem)] font-semibold leading-[0.99] tracking-[-0.055em] text-foreground"
         >
           We build the full stack of
           <br className="hidden sm:block" /> your brand
           <br />
-          <span className="text-[#777479]">design, code </span>
+          <span className="text-muted-foreground">design, code </span>
           <span className="text-[#f45125]">&amp; AI</span>
-          <span>.</span>
+          <span className="text-foreground">.</span>
         </motion.h1>
 
+        {/* Supporting copy */}
         <motion.p
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.15 }}
-          className="mt-7 max-w-[780px] text-[13px] leading-[1.4] text-[#a5a1a5] sm:text-[15px]"
+          className="mt-7 max-w-[780px] text-[13px] leading-[1.4] text-muted-foreground sm:text-[15px]"
         >
           One studio for identity, interfaces, web and mobile products, and the
           AI systems behind them.
@@ -79,7 +85,7 @@ export function Hero() {
         >
           <Link
             href="/contact"
-            className="group inline-flex h-9 items-center gap-1.5 rounded-full bg-[#ff4b19] px-4.5 text-[11px] font-medium text-black shadow-[0_4px_22px_rgba(255,75,25,0.28)] transition hover:-translate-y-0.5 hover:bg-[#ff6035]"
+            className="group inline-flex h-9 items-center gap-1.5 rounded-full bg-[#ff4b19] px-4.5 text-[11px] font-medium text-white shadow-[0_4px_22px_rgba(255,75,25,0.28)] transition duration-200 hover:-translate-y-0.5 hover:bg-[#ff6035]"
           >
             Start a Project
             <ArrowRight className="size-3 transition-transform group-hover:translate-x-0.5" />
@@ -87,7 +93,7 @@ export function Hero() {
 
           <Link
             href="/work"
-            className="group inline-flex h-9 items-center gap-1.5 rounded-full border border-white/10 px-4.5 text-[11px] text-white transition hover:border-white/25 hover:bg-white/5"
+            className="group inline-flex h-9 items-center gap-1.5 rounded-full border border-border bg-background/30 px-4.5 text-[11px] text-foreground transition hover:border-foreground/25 hover:bg-muted"
           >
             See Our Work
             <ArrowUpRight className="size-3 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
@@ -95,19 +101,19 @@ export function Hero() {
         </motion.div>
       </div>
 
-      {/* Client logos integrated into the hero */}
-      <div className="relative mt-13.5 min-h-46.25 overflow-hidden px-5 pb-8 pt-16.25 sm:mt-13.5 sm:min-h-48.75">
-        {/* Large orange semicircle */}
+      {/* Client strip and orange semicircular glow */}
+      <div className="relative mt-[54px] min-h-[185px] overflow-hidden bg-background px-5 pb-8 pt-[65px] text-center transition-colors duration-300 sm:mt-[54px] sm:min-h-[195px]">
+        {/* Large orange arc */}
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-full overflow-hidden"
+          className="pointer-events-none absolute inset-x-0 top-0 -z-0 h-full overflow-hidden"
         >
           <div
-            className="absolute left-1/2 top-0 h-107.5 w-[155%] -translate-x-1/2 rounded-[50%] bg-[#0b0a0a]"
+            className="absolute left-1/2 top-0 h-[430px] w-[155%] -translate-x-1/2 rounded-[50%] bg-background"
             style={{
-              borderTop: "1px solid rgba(255,90,38,0.22)",
+              borderTop: "1px solid rgba(255,90,38,0.28)",
               boxShadow:
-                "inset 0 18px 48px rgba(255,75,25,0.42), inset 0 42px 95px rgba(150,43,20,0.28)",
+                "inset 0 18px 48px rgba(255,75,25,0.35), inset 0 42px 95px rgba(150,43,20,0.22)",
             }}
           />
 
@@ -115,26 +121,27 @@ export function Hero() {
             className="absolute inset-x-0 bottom-0 h-12"
             style={{
               background:
-                "linear-gradient(to bottom, transparent, #0b0a0a)",
+                "linear-gradient(to bottom, transparent, var(--background))",
             }}
           />
         </div>
 
+        {/* Client names */}
         <motion.div
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
-          className="relative mx-auto max-w-[1100px]"
+          className="relative z-10 mx-auto max-w-[1100px]"
         >
-          <p className="text-[15px] font-normal text-[#f0eeee] sm:text-[16px]">
+          <p className="text-[15px] font-normal text-foreground sm:text-[16px]">
             Built for founders, startups &amp; scaling teams
           </p>
 
-          <ul className="mt-6 flex flex-wrap items-center justify-center gap-x-5 gap-y-3 text-[11px] font-medium text-[#777479] sm:gap-x-6 sm:text-[12px]">
+          <ul className="mt-6 flex flex-wrap items-center justify-center gap-x-5 gap-y-3 text-[11px] font-medium text-muted-foreground sm:gap-x-6 sm:text-[12px]">
             {clients.map((name) => (
               <li
                 key={name}
-                className="transition-colors duration-200 hover:text-white"
+                className="transition-colors duration-200 hover:text-foreground"
               >
                 {name}
               </li>

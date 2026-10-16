@@ -31,8 +31,8 @@ const projects = [
 
 export function FeaturedWork() {
   return (
-    <section className="px-5 py-3 lg:px-8 lg:py-8">
-      <div className="mx-auto max-w-350">
+    <section className="bg-background px-5 py-3 text-foreground transition-colors duration-300 lg:px-8 lg:py-8">
+      <div className="mx-auto max-w-[1400px]">
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -41,7 +41,8 @@ export function FeaturedWork() {
           className="mx-auto max-w-md text-center"
         >
           <p className="text-xs text-[#ff5a1f]">Featured Work</p>
-          <h2 className="font-display mt-5 text-3xl font-bold leading-tight tracking-tight text-white sm:text-4xl">
+
+          <h2 className="font-display mt-5 text-3xl font-bold leading-tight tracking-tight text-foreground sm:text-4xl">
             Shipped, measured, handed over
           </h2>
         </motion.div>
@@ -54,28 +55,31 @@ export function FeaturedWork() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: i * 0.1 }}
+              className="h-full"
             >
               <Link
                 href={project.href}
-                className="group flex h-full flex-col rounded-2xl border border-white/10 bg-linear-to-b from-[#121214] to-[#0a0a0b] p-5 transition duration-300 hover:-translate-y-1 hover:border-white/20"
+                className="group flex h-full flex-col rounded-2xl border border-border bg-[var(--surface)] p-5 transition duration-300 hover:-translate-y-1 hover:border-[var(--text-tertiary)] hover:shadow-lg hover:shadow-black/5"
               >
-                <div className="relative aspect-4/3 overflow-hidden rounded-xl">
+                <div className="relative aspect-[4/3] overflow-hidden rounded-xl bg-[var(--surface-raised)]">
                   <Image
                     src={project.image}
                     alt={project.title}
                     fill
-                    className="object-cover transition duration-500 group-hover:scale-[1.03]"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
                   />
                 </div>
 
-                <div className="mt-8 flex items-center justify-between">
-                  <h3 className="font-display text-base font-semibold text-white">
+                <div className="mt-8 flex items-center justify-between gap-3">
+                  <h3 className="font-display text-base font-semibold text-foreground">
                     {project.title}
                   </h3>
-                  <ArrowUpRight className="size-3.5 text-neutral-400 transition group-hover:text-white" />
+
+                  <ArrowUpRight className="size-3.5 shrink-0 text-muted-foreground transition-colors group-hover:text-[#ff5a1f]" />
                 </div>
 
-                <p className="mt-3 text-[13px] text-neutral-400">
+                <p className="mt-3 text-[13px] text-muted-foreground">
                   {project.subtitle}
                 </p>
 
@@ -83,7 +87,7 @@ export function FeaturedWork() {
                   {project.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="rounded-full border border-white/10 px-3 py-1.5 text-[10px] text-neutral-300"
+                      className="rounded-full border border-border bg-[var(--surface-raised)] px-3 py-1.5 text-[10px] text-[var(--text-secondary)] transition-colors"
                     >
                       {tag}
                     </span>
@@ -97,10 +101,10 @@ export function FeaturedWork() {
         <div className="mt-12 flex justify-center">
           <Link
             href="/work"
-            className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.02] px-5 py-2.5 text-[11px] font-medium text-white transition hover:bg-white/10"
+            className="group inline-flex items-center gap-2 rounded-full border border-border bg-[var(--surface)] px-5 py-2.5 text-[11px] font-medium text-foreground transition-colors duration-300 hover:border-[#ff5a1f]/40 hover:bg-muted"
           >
             View All Work
-            <ArrowRight className="size-3" />
+            <ArrowRight className="size-3 transition-transform group-hover:translate-x-0.5" />
           </Link>
         </div>
       </div>
