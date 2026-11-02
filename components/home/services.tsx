@@ -3,6 +3,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 
@@ -92,23 +93,27 @@ const services: Service[] = [
   },
 ];
 
+const LINKEDIN_ROUTE = "/services/linkedin-profile-optimization";
+
 export function Services() {
   const [open, setOpen] = useState<number | null>(2);
 
   return (
     <section className="bg-background px-5 py-2 text-foreground transition-colors duration-300 lg:px-8 lg:py-5">
       <div className="relative mx-auto max-w-[1400px] overflow-hidden rounded-3xl border border-border bg-[var(--surface)] px-5 py-16 transition-colors duration-300 sm:px-10 lg:py-20">
-        {/* Orange glow */}
+
+        {/* Quadra orange ambient glow */}
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute -bottom-40 -right-40 z-0 size-[520px] rounded-full"
+          className="pointer-events-none absolute -bottom-40 -right-40 z-0 size-[520px] rounded-full blur-3xl"
           style={{
             background:
-              "radial-gradient(circle, rgba(255,77,0,0.18) 0%, rgba(255,77,0,0.07) 40%, transparent 70%)",
+              "radial-gradient(circle, rgba(255,90,31,0.17) 0%, rgba(255,90,31,0.06) 40%, transparent 70%)",
           }}
         />
 
         <div className="relative z-10 mx-auto max-w-[1200px]">
+
           {/* Heading */}
           <motion.div
             initial={{ opacity: 0, y: 16 }}
@@ -117,7 +122,9 @@ export function Services() {
             transition={{ duration: 0.6 }}
             className="mx-auto max-w-xl text-center"
           >
-            <p className="text-xs text-[#ff5a1f]">Our Services</p>
+            <p className="text-xs font-medium text-[#ff5a1f]">
+              Our Services
+            </p>
 
             <h2 className="font-display mt-5 text-2xl font-bold leading-tight tracking-tight text-foreground sm:text-4xl">
               Your Aspiration, Our Expertise: Tailored Services for Unmatched
@@ -130,37 +137,57 @@ export function Services() {
             {services.map((service, i) => {
               const isOpen = open === i;
               const number = String(i + 1).padStart(2, "0");
+              const isLinkedIn = i === 6;
 
               return (
-                <li
-                  key={service.title}
-                  className="border-b border-border"
-                >
-                  <button
-                    type="button"
-                    aria-expanded={isOpen}
-                    onClick={() => setOpen(isOpen ? null : i)}
-                    className="group flex w-full items-center gap-4 py-5 text-left sm:gap-6"
-                  >
-                    <span className="w-10 shrink-0 font-display text-xl text-muted-foreground">
-                      {number}
-                    </span>
+                <li key={service.title} className="border-b border-border">
 
-                    <span className="flex-1 font-display text-base font-medium uppercase tracking-wide text-foreground transition-colors group-hover:text-[#ff5a1f] sm:text-xl">
-                      {service.title}
-                    </span>
+                  {/* LinkedIn service navigates to its own page */}
+                  {isLinkedIn ? (
+                    <Link
+                      href={LINKEDIN_ROUTE}
+                      className="group flex w-full items-center gap-4 py-5 text-left sm:gap-6"
+                    >
+                      <span className="w-10 shrink-0 font-display text-xl text-muted-foreground">
+                        {number}
+                      </span>
 
-                    <span className="grid size-8 shrink-0 place-items-center rounded-full border border-border text-foreground transition-colors group-hover:border-[#ff5a1f]/60 group-hover:text-[#ff5a1f]">
-                      {isOpen ? (
+                      <span className="flex-1 font-display text-base font-medium uppercase tracking-wide text-foreground transition-colors group-hover:text-[#ff5a1f] sm:text-xl">
+                        {service.title}
+                      </span>
+
+                      <span className="grid size-8 shrink-0 place-items-center rounded-full border border-border text-foreground transition-colors group-hover:border-[#ff5a1f]/60 group-hover:text-[#ff5a1f]">
                         <ArrowUpRight className="size-3.5" />
-                      ) : (
-                        <ArrowRight className="size-3.5" />
-                      )}
-                    </span>
-                  </button>
+                      </span>
+                    </Link>
+                  ) : (
+                    <button
+                      type="button"
+                      aria-expanded={isOpen}
+                      onClick={() => setOpen(isOpen ? null : i)}
+                      className="group flex w-full items-center gap-4 py-5 text-left sm:gap-6"
+                    >
+                      <span className="w-10 shrink-0 font-display text-xl text-muted-foreground">
+                        {number}
+                      </span>
 
+                      <span className="flex-1 font-display text-base font-medium uppercase tracking-wide text-foreground transition-colors group-hover:text-[#ff5a1f] sm:text-xl">
+                        {service.title}
+                      </span>
+
+                      <span className="grid size-8 shrink-0 place-items-center rounded-full border border-border text-foreground transition-colors group-hover:border-[#ff5a1f]/60 group-hover:text-[#ff5a1f]">
+                        {isOpen ? (
+                          <ArrowUpRight className="size-3.5" />
+                        ) : (
+                          <ArrowRight className="size-3.5" />
+                        )}
+                      </span>
+                    </button>
+                  )}
+
+                  {/* Accordion content */}
                   <AnimatePresence initial={false}>
-                    {isOpen && (
+                    {isOpen && !isLinkedIn && (
                       <motion.div
                         initial={{ height: 0, opacity: 0 }}
                         animate={{ height: "auto", opacity: 1 }}
@@ -191,7 +218,7 @@ export function Services() {
                                   unoptimized
                                 />
 
-                                <div className="absolute inset-0 bg-black/55 transition-colors group-hover/card:bg-black/40" />
+                                <div className="absolute inset-0 bg-black/50 transition-colors group-hover/card:bg-black/35" />
 
                                 <span className="absolute inset-0 grid place-items-center px-3 text-center text-[11px] font-medium leading-4 text-white sm:px-6 sm:text-xs">
                                   {card.label}
