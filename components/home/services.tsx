@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState } from "react";
@@ -19,10 +18,26 @@ const services: Service[] = [
     description:
       "We craft intuitive and engaging user experiences. From wireframes to high-fidelity prototypes, we focus on user-centered design that drives conversion and satisfaction.",
     cards: [
-      { label: "User Research", image: "https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?q=80&w=800&auto=format&fit=crop" },
-      { label: "Wireframing", image: "https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?q=80&w=800&auto=format&fit=crop" },
-      { label: "Prototyping", image: "https://images.unsplash.com/photo-1587440871875-191322ee64b0?q=80&w=800&auto=format&fit=crop" },
-      { label: "Usability Testing", image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800&auto=format&fit=crop" },
+      {
+        label: "User Research",
+        image:
+          "https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?q=80&w=800&auto=format&fit=crop",
+      },
+      {
+        label: "Wireframing",
+        image:
+          "https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?q=80&w=800&auto=format&fit=crop",
+      },
+      {
+        label: "Prototyping",
+        image:
+          "https://images.unsplash.com/photo-1587440871875-191322ee64b0?q=80&w=800&auto=format&fit=crop",
+      },
+      {
+        label: "Usability Testing",
+        image:
+          "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800&auto=format&fit=crop",
+      },
     ],
   },
   {
@@ -30,10 +45,26 @@ const services: Service[] = [
     description:
       "Visual storytelling that elevates your brand. We create compelling graphics, branding materials, and marketing assets that leave a lasting impression.",
     cards: [
-      { label: "Brand Identity", image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?q=80&w=800&auto=format&fit=crop" },
-      { label: "Marketing Collateral", image: "https://images.unsplash.com/photo-1626785774573-4b799315345d?q=80&w=800&auto=format&fit=crop" },
-      { label: "Social Media Graphics", image: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=800&auto=format&fit=crop" },
-      { label: "Illustration", image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=800&auto=format&fit=crop" },
+      {
+        label: "Brand Identity",
+        image:
+          "https://images.unsplash.com/photo-1561070791-2526d30994b5?q=80&w=800&auto=format&fit=crop",
+      },
+      {
+        label: "Marketing Collateral",
+        image:
+          "https://images.unsplash.com/photo-1626785774573-4b799315345d?q=80&w=800&auto=format&fit=crop",
+      },
+      {
+        label: "Social Media Graphics",
+        image:
+          "https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=800&auto=format&fit=crop",
+      },
+      {
+        label: "Illustration",
+        image:
+          "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=800&auto=format&fit=crop",
+      },
     ],
   },
   {
@@ -41,10 +72,26 @@ const services: Service[] = [
     description:
       "We build responsive, high-performance websites and web applications with modern technologies, accessible interfaces, and maintainable code.",
     cards: [
-      { label: "Artificial Intelligence", image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=800&auto=format&fit=crop" },
-      { label: "Front-End Development", image: "https://images.unsplash.com/photo-1547658719-da2b51169166?q=80&w=800&auto=format&fit=crop" },
-      { label: "Dedicated Developer", image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=800&auto=format&fit=crop" },
-      { label: "Mobile App Development", image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?q=80&w=800&auto=format&fit=crop" },
+      {
+        label: "Artificial Intelligence",
+        image:
+          "https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=800&auto=format&fit=crop",
+      },
+      {
+        label: "Front-End Development",
+        image:
+          "https://images.unsplash.com/photo-1547658719-da2b51169166?q=80&w=800&auto=format&fit=crop",
+      },
+      {
+        label: "Dedicated Developer",
+        image:
+          "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=800&auto=format&fit=crop",
+      },
+      {
+        label: "Mobile App Development",
+        image:
+          "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?q=80&w=800&auto=format&fit=crop",
+      },
     ],
   },
   {
@@ -52,10 +99,26 @@ const services: Service[] = [
     description:
       "Native and cross-platform mobile applications built for performance. We handle everything from concept to App Store deployment.",
     cards: [
-      { label: "iOS Development", image: "https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?q=80&w=800&auto=format&fit=crop" },
-      { label: "Android Development", image: "https://images.unsplash.com/photo-1607252650355-f7fd0460ccdb?q=80&w=800&auto=format&fit=crop" },
-      { label: "Cross-Platform", image: "https://images.unsplash.com/photo-1551650975-87deedd944c3?q=80&w=800&auto=format&fit=crop" },
-      { label: "API Integration", image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=800&auto=format&fit=crop" },
+      {
+        label: "iOS Development",
+        image:
+          "https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?q=80&w=800&auto=format&fit=crop",
+      },
+      {
+        label: "Android Development",
+        image:
+          "https://images.unsplash.com/photo-1607252650355-f7fd0460ccdb?q=80&w=800&auto=format&fit=crop",
+      },
+      {
+        label: "Cross-Platform",
+        image:
+          "https://images.unsplash.com/photo-1551650975-87deedd944c3?q=80&w=800&auto=format&fit=crop",
+      },
+      {
+        label: "API Integration",
+        image:
+          "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=800&auto=format&fit=crop",
+      },
     ],
   },
   {
@@ -63,10 +126,26 @@ const services: Service[] = [
     description:
       "Custom WordPress themes and plugins tailored to your business needs. We build fast, secure, and easy-to-manage websites.",
     cards: [
-      { label: "Custom Themes", image: "https://images.unsplash.com/photo-1600132806370-bf17e65e942f?q=80&w=800&auto=format&fit=crop" },
-      { label: "Plugin Development", image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=800&auto=format&fit=crop" },
-      { label: "E-commerce", image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=800&auto=format&fit=crop" },
-      { label: "Performance Tuning", image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=800&auto=format&fit=crop" },
+      {
+        label: "Custom Themes",
+        image:
+          "https://images.unsplash.com/photo-1600132806370-bf17e65e942f?q=80&w=800&auto=format&fit=crop",
+      },
+      {
+        label: "Plugin Development",
+        image:
+          "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=800&auto=format&fit=crop",
+      },
+      {
+        label: "E-commerce",
+        image:
+          "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=800&auto=format&fit=crop",
+      },
+      {
+        label: "Performance Tuning",
+        image:
+          "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=800&auto=format&fit=crop",
+      },
     ],
   },
   {
@@ -74,10 +153,26 @@ const services: Service[] = [
     description:
       "Leverage the power of AI to streamline operations. We build custom chatbots, automate workflows, and integrate intelligent systems.",
     cards: [
-      { label: "Chatbots", image: "https://images.unsplash.com/photo-1531746790731-6c087fecd65a?q=80&w=800&auto=format&fit=crop" },
-      { label: "Workflow Automation", image: "https://images.unsplash.com/photo-1518432031352-d6fc5c10da5a?q=80&w=800&auto=format&fit=crop" },
-      { label: "Data Analysis", image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800&auto=format&fit=crop" },
-      { label: "Machine Learning", image: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=800&auto=format&fit=crop" },
+      {
+        label: "Chatbots",
+        image:
+          "https://images.unsplash.com/photo-1531746790731-6c087fecd65a?q=80&w=800&auto=format&fit=crop",
+      },
+      {
+        label: "Workflow Automation",
+        image:
+          "https://images.unsplash.com/photo-1518432031352-d6fc5c10da5a?q=80&w=800&auto=format&fit=crop",
+      },
+      {
+        label: "Data Analysis",
+        image:
+          "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800&auto=format&fit=crop",
+      },
+      {
+        label: "Machine Learning",
+        image:
+          "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=800&auto=format&fit=crop",
+      },
     ],
   },
   {
@@ -85,35 +180,50 @@ const services: Service[] = [
     description:
       "Position yourself as an industry leader. We optimize your profile and create engaging content to grow your professional network.",
     cards: [
-      { label: "Profile Optimization", image: "https://images.unsplash.com/photo-1611944212129-29977ae1398c?q=80&w=800&auto=format&fit=crop" },
-      { label: "Content Strategy", image: "https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=800&auto=format&fit=crop" },
-      { label: "Lead Generation", image: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=800&auto=format&fit=crop" },
-      { label: "Network Growth", image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=800&auto=format&fit=crop" },
+      {
+        label: "Profile Optimization",
+        image:
+          "https://images.unsplash.com/photo-1611944212129-29977ae1398c?q=80&w=800&auto=format&fit=crop",
+      },
+      {
+        label: "Content Strategy",
+        image:
+          "https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=800&auto=format&fit=crop",
+      },
+      {
+        label: "Lead Generation",
+        image:
+          "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=800&auto=format&fit=crop",
+      },
+      {
+        label: "Network Growth",
+        image:
+          "https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=800&auto=format&fit=crop",
+      },
     ],
   },
 ];
 
 const LINKEDIN_ROUTE = "/services/linkedin-profile-optimization";
+const GRAPHIC_DESIGN_ROUTE = "/services/graphic-design";
 
 export function Services() {
   const [open, setOpen] = useState<number | null>(2);
 
   return (
     <section className="bg-background px-5 py-2 text-foreground transition-colors duration-300 lg:px-8 lg:py-5">
-      <div className="relative mx-auto max-w-[1400px] overflow-hidden rounded-3xl border border-border bg-[var(--surface)] px-5 py-16 transition-colors duration-300 sm:px-10 lg:py-20">
-
+      <div className="relative mx-auto max-w-350 overflow-hidden rounded-3xl border border-border bg-(--surface) px-5 py-16 transition-colors duration-300 sm:px-10 lg:py-20">
         {/* Quadra orange ambient glow */}
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute -bottom-40 -right-40 z-0 size-[520px] rounded-full blur-3xl"
+          className="pointer-events-none absolute -bottom-40 -right-40 z-0 size-130 rounded-full blur-3xl"
           style={{
             background:
               "radial-gradient(circle, rgba(255,90,31,0.17) 0%, rgba(255,90,31,0.06) 40%, transparent 70%)",
           }}
         />
 
-        <div className="relative z-10 mx-auto max-w-[1200px]">
-
+        <div className="relative z-10 mx-auto max-w-300">
           {/* Heading */}
           <motion.div
             initial={{ opacity: 0, y: 16 }}
@@ -122,9 +232,7 @@ export function Services() {
             transition={{ duration: 0.6 }}
             className="mx-auto max-w-xl text-center"
           >
-            <p className="text-xs font-medium text-[#ff5a1f]">
-              Our Services
-            </p>
+            <p className="text-xs font-medium text-[#ff5a1f]">Our Services</p>
 
             <h2 className="font-display mt-5 text-2xl font-bold leading-tight tracking-tight text-foreground sm:text-4xl">
               Your Aspiration, Our Expertise: Tailored Services for Unmatched
@@ -138,14 +246,16 @@ export function Services() {
               const isOpen = open === i;
               const number = String(i + 1).padStart(2, "0");
               const isLinkedIn = i === 6;
+              const isGraphicDesign = i === 1;
 
               return (
                 <li key={service.title} className="border-b border-border">
-
                   {/* LinkedIn service navigates to its own page */}
-                  {isLinkedIn ? (
+                  {isLinkedIn || isGraphicDesign ? (
                     <Link
-                      href={LINKEDIN_ROUTE}
+                      href={
+                        isGraphicDesign ? GRAPHIC_DESIGN_ROUTE : LINKEDIN_ROUTE
+                      }
                       className="group flex w-full items-center gap-4 py-5 text-left sm:gap-6"
                     >
                       <span className="w-10 shrink-0 font-display text-xl text-muted-foreground">
