@@ -166,15 +166,15 @@ export function LinkedInHero() {
                   background:
                     "repeating-linear-gradient(145deg, transparent 0px, transparent 18px, rgba(255,90,31,0.10) 19px, transparent 21px)",
                 }}
-              />
-
-              <div className="absolute left-4 top-4">
-                <p className="text-[9px] font-bold text-[#612c17]">
-                  Maria Santos
-                </p>
-                <p className="mt-1 text-[7px] text-[#8d5036]">
-                  Marketing Director · Growth Strategist
-                </p>
+              >
+                <Image
+                  src="/images/linkedin/tahir-banner.png"
+                  alt="Professional personal brand portrait"
+                  fill
+                  
+                  className="object-cover object-top"
+                />
+                
               </div>
             </div>
 
@@ -211,10 +211,10 @@ export function LinkedInHero() {
           </div>
 
           {/* Portrait-style profile card */}
-          <div className="absolute bottom-[10%] right-[2%] z-20 w-[25%] rounded-2xl border border-border bg-(--surface) p-1.5 shadow-[0_18px_45px_rgba(0,0,0,0.13)] sm:w-[23%]">
-            <div className="relative aspect-[0.72/1] w-full overflow-hidden rounded-xl bg-[var(--surface-raised)]">
+          <div className="absolute bottom-[10%] right-[2%] z-20 w-[25%] rounded-2xl border border-border bg-(--surface) p-1.5 shadow-[0_18px_45px_rgba(0,0,0,0.13)] sm:w-[25%]">
+            <div className="relative aspect-[0.72/1] w-full overflow-hidden rounded-xl bg-(--surface-raised)">
               <Image
-                src="/images/personal-brand-image-1.webp"
+                src="/images/linkedin/karrar.png"
                 alt="Professional personal brand portrait"
                 fill
                 sizes="(max-width: 768px) 25vw, 150px"
